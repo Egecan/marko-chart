@@ -23,4 +23,5 @@ yarn-error.log*
 .idea/**/workspace.xml
 .idea/dictionaries
 .idea/**/libraries
+.idea/vcs.xml
 *.iws

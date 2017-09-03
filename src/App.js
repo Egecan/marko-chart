@@ -33,7 +33,7 @@ export default class App extends Component {
                             + `sharpe: ${obj.sharpe}<br />`
                             + obj.weights.map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
                         }
-                        showLegends
+                        //showLegends
                         legendPosition="bottom-right"
                         data={jsonDataParsed}
                     />
