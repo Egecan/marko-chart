@@ -3,14 +3,20 @@ import React, { Component } from 'react';
 import './App.css';
 import LineChart from 'react-linechart';
 import '../node_modules/react-linechart/dist/styles.css';
-import { parseJsonArray } from './utils/Parser'
+import { parseJsonArray, parseGroupingBy } from './utils/Parser'
 
 const jsonData = require('./testData/data.json');
+const jsonData2 = require('./testData/data2.json');
 
 export default class App extends Component {
     render() {
 
+        let pointsArray = jsonData2.EfficientPortfolios.Points
+        let finalArray = pointsArray.concat(jsonData2.CML.OptimalPorfolio.OP.Portfolio)
+        console.log(finalArray)
+
         const jsonDataParsed = parseJsonArray(jsonData.Points, "volatility", "return")
+        const jsonDataParsed2 = parseGroupingBy(finalArray, "volatility", "return", "id")
 
         return (
             <div>
@@ -31,11 +37,13 @@ export default class App extends Component {
                             `return: ${obj.y}<br />`
                             + `deviation: ${obj.x}<br />`
                             + `sharpe: ${obj.sharpe}<br />`
-                            + obj.weights.map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
+                            + obj.weights && obj.weights !== undefined
+                                ? obj.weights.map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
+                                : ''
                         }
                         //showLegends
                         legendPosition="bottom-right"
-                        data={jsonDataParsed}
+                        data={jsonDataParsed2}
                     />
                 </div>
             </div>

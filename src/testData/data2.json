@@ -1,0 +1,2356 @@
+{
+    "CML": {
+        "OptimalPorfolio": {
+            "OP": {
+                "Portfolio": [
+                    {
+                    "id": "cml",
+                    "weights": [
+                        {
+                            "mean_return": 0.116,
+                            "symbol": "AAPL",
+                            "weight": 0.532
+                        },
+                        {
+                            "mean_return": 0.031,
+                            "symbol": "GOOG",
+                            "weight": 0.192
+                        },
+                        {
+                            "mean_return": 0.0,
+                            "symbol": "MSFT",
+                            "weight": 0.0
+                        },
+                        {
+                            "mean_return": 0.091,
+                            "symbol": "FB",
+                            "weight": 0.276
+                        }
+                    ],
+                    "sharpe": 1.001,
+                    "name": "am_tech_stocks",
+                    "return": 0.238,
+                    "volatility": 0.238
+                },
+                    {
+                        "id": "cml",
+                        "return": 0.05,
+                        "volatility": 0
+                    },
+                    {
+                        "id": "cml",
+                        "return": 0.426,
+                        "volatility": 0.476
+                    }
+                ]
+            },
+            "opt_ret": 0.237798048307,
+            "opt_vol": 0.23758786292
+        }
+    },
+    "EfficientPortfolios": {
+        "id": "efficient",
+        "Points": [
+            {
+                "return": 0.139521267343,
+                "sharpe": 0.747188482979,
+                "volatility": 0.18672834301,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.210991
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.249054
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.447006
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.092949
+                    }
+                ]
+            },
+            {
+                "return": 0.141464102261,
+                "sharpe": 0.757501059653,
+                "volatility": 0.186751028871,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.217004
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.250095
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.436979
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.095922
+                    }
+                ]
+            },
+            {
+                "return": 0.143407092511,
+                "sharpe": 0.767637966382,
+                "volatility": 0.186816049742,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.222944
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.251399
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.42682
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.098837
+                    }
+                ]
+            },
+            {
+                "return": 0.145349980201,
+                "sharpe": 0.777591827044,
+                "volatility": 0.186923235489,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.22886
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.252912
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.416543
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.101685
+                    }
+                ]
+            },
+            {
+                "return": 0.1472925868,
+                "sharpe": 0.787356669336,
+                "volatility": 0.187072253956,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.234786
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.254555
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.406182
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.104476
+                    }
+                ]
+            },
+            {
+                "return": 0.149235640479,
+                "sharpe": 0.796928322126,
+                "volatility": 0.187263567294,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.240733
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.256257
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.395777
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.107233
+                    }
+                ]
+            },
+            {
+                "return": 0.151178331956,
+                "sharpe": 0.806300449145,
+                "volatility": 0.187496276501,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.246691
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.257976
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.385356
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.109976
+                    }
+                ]
+            },
+            {
+                "return": 0.153121413029,
+                "sharpe": 0.815468936417,
+                "volatility": 0.187770994321,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.252648
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.259694
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.374937
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.112721
+                    }
+                ]
+            },
+            {
+                "return": 0.155064199788,
+                "sharpe": 0.824428311212,
+                "volatility": 0.188086941799,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.258593
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.26141
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.364524
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.115473
+                    }
+                ]
+            },
+            {
+                "return": 0.157007075218,
+                "sharpe": 0.833175708505,
+                "volatility": 0.188444134431,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.264525
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.263126
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.354116
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.118233
+                    }
+                ]
+            },
+            {
+                "return": 0.158950033144,
+                "sharpe": 0.841707586356,
+                "volatility": 0.188842343493,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.270442
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.264845
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.343712
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.121001
+                    }
+                ]
+            },
+            {
+                "return": 0.160892729663,
+                "sharpe": 0.850019440174,
+                "volatility": 0.189281235298,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.276344
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.266569
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.333312
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.123775
+                    }
+                ]
+            },
+            {
+                "return": 0.162835566101,
+                "sharpe": 0.85811043962,
+                "volatility": 0.189760616562,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.282226
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.268299
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.322916
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.126559
+                    }
+                ]
+            },
+            {
+                "return": 0.164778516346,
+                "sharpe": 0.86597831403,
+                "volatility": 0.19028018794,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.288082
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.270031
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.312529
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.129358
+                    }
+                ]
+            },
+            {
+                "return": 0.166721093794,
+                "sharpe": 0.873620188903,
+                "volatility": 0.190839332598,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.293981
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.271715
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.302154
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.132149
+                    }
+                ]
+            },
+            {
+                "return": 0.168664399298,
+                "sharpe": 0.881033066214,
+                "volatility": 0.191439352013,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.298491
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.27463
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.291593
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.135287
+                    }
+                ]
+            },
+            {
+                "return": 0.170606956401,
+                "sharpe": 0.888225204739,
+                "volatility": 0.192076238651,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.30654
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.27528
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.280973
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.137207
+                    }
+                ]
+            },
+            {
+                "return": 0.172550053524,
+                "sharpe": 0.895180421584,
+                "volatility": 0.192754498829,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.310946
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.280111
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.269279
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.139665
+                    }
+                ]
+            },
+            {
+                "return": 0.174492686376,
+                "sharpe": 0.901913657932,
+                "volatility": 0.193469391268,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.316442
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.282021
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.25893
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.142607
+                    }
+                ]
+            },
+            {
+                "return": 0.176435498233,
+                "sharpe": 0.908423907715,
+                "volatility": 0.1942215487,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.322762
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.282952
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.248845
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.145441
+                    }
+                ]
+            },
+            {
+                "return": 0.178378623462,
+                "sharpe": 0.914707941276,
+                "volatility": 0.195011560973,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.32914
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.283864
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.238748
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.148249
+                    }
+                ]
+            },
+            {
+                "return": 0.180321575678,
+                "sharpe": 0.920766484614,
+                "volatility": 0.195838552653,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.33555
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.284757
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.228649
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.151045
+                    }
+                ]
+            },
+            {
+                "return": 0.182263952211,
+                "sharpe": 0.926600448478,
+                "volatility": 0.196701774223,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.341977
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.28563
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.218555
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.153837
+                    }
+                ]
+            },
+            {
+                "return": 0.18420686387,
+                "sharpe": 0.932212889111,
+                "volatility": 0.197601713108,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.348412
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.286487
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.208468
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.156632
+                    }
+                ]
+            },
+            {
+                "return": 0.186150036211,
+                "sharpe": 0.937602722006,
+                "volatility": 0.198538284757,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.354217
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.286718
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.199024
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.160042
+                    }
+                ]
+            },
+            {
+                "return": 0.1880928413,
+                "sharpe": 0.942780896644,
+                "volatility": 0.199508541136,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.361262
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.288217
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.188293
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.162228
+                    }
+                ]
+            },
+            {
+                "return": 0.190035483247,
+                "sharpe": 0.947742006597,
+                "volatility": 0.200513939368,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.367662
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.289141
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.178179
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.165017
+                    }
+                ]
+            },
+            {
+                "return": 0.19197845091,
+                "sharpe": 0.95249219898,
+                "volatility": 0.201553830169,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.374042
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.290139
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.168029
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.16779
+                    }
+                ]
+            },
+            {
+                "return": 0.193921276104,
+                "sharpe": 0.957048526852,
+                "volatility": 0.202624287759,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.377721
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.295593
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.15625
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.170436
+                    }
+                ]
+            },
+            {
+                "return": 0.195864136917,
+                "sharpe": 0.961390871549,
+                "volatility": 0.203729973638,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.384569
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.297088
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.145603
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.17274
+                    }
+                ]
+            },
+            {
+                "return": 0.197807060323,
+                "sharpe": 0.9655347757,
+                "volatility": 0.204867877679,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.390186
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.299048
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.135174
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.175592
+                    }
+                ]
+            },
+            {
+                "return": 0.199749638304,
+                "sharpe": 0.969481919617,
+                "volatility": 0.206037507521,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.396155
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.300775
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.124744
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.178325
+                    }
+                ]
+            },
+            {
+                "return": 0.201692733171,
+                "sharpe": 0.973237331138,
+                "volatility": 0.207239001955,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.402178
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.302475
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.114309
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.181038
+                    }
+                ]
+            },
+            {
+                "return": 0.203635318104,
+                "sharpe": 0.9768051335,
+                "volatility": 0.208470769778,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.407915
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.304311
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.103907
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.183866
+                    }
+                ]
+            },
+            {
+                "return": 0.205578549185,
+                "sharpe": 0.980189788481,
+                "volatility": 0.209733412448,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.413672
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.306018
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.093576
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.186734
+                    }
+                ]
+            },
+            {
+                "return": 0.207521173795,
+                "sharpe": 0.983394096381,
+                "volatility": 0.211025441945,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.420028
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.306975
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.083461
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.189536
+                    }
+                ]
+            },
+            {
+                "return": 0.209464004837,
+                "sharpe": 0.986424684865,
+                "volatility": 0.212346677908,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.425835
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.308817
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.073027
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.192321
+                    }
+                ]
+            },
+            {
+                "return": 0.211406913453,
+                "sharpe": 0.989284660505,
+                "volatility": 0.213696746642,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.431284
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.310488
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.062844
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.195384
+                    }
+                ]
+            },
+            {
+                "return": 0.213349796644,
+                "sharpe": 0.991979868104,
+                "volatility": 0.215074724301,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.437125
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.312669
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.052188
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.198018
+                    }
+                ]
+            },
+            {
+                "return": 0.215292855911,
+                "sharpe": 0.994512490843,
+                "volatility": 0.216480796262,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.442928
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.31388
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.042143
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.20105
+                    }
+                ]
+            },
+            {
+                "return": 0.21723562711,
+                "sharpe": 0.996891227799,
+                "volatility": 0.217913069202,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.44903
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.316458
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.031136
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.203376
+                    }
+                ]
+            },
+            {
+                "return": 0.21917836657,
+                "sharpe": 0.999116408642,
+                "volatility": 0.219372201952,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.454864
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.318126
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.020798
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.206212
+                    }
+                ]
+            },
+            {
+                "return": 0.221121193888,
+                "sharpe": 1.00119441528,
+                "volatility": 0.220857398437,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.460724
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.319768
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.010465
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.209043
+                    }
+                ]
+            },
+            {
+                "return": 0.22306412417,
+                "sharpe": 1.00312985792,
+                "volatility": 0.222368143475,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.466613
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.321408
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.000121
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.211858
+                    }
+                ]
+            },
+            {
+                "return": 0.225006918525,
+                "sharpe": 1.00467360121,
+                "volatility": 0.223960217781,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.475641
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.304287
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.220072
+                    }
+                ]
+            },
+            {
+                "return": 0.226950064383,
+                "sharpe": 1.00560761415,
+                "volatility": 0.225684512716,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.484067
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.28737
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.228564
+                    }
+                ]
+            },
+            {
+                "return": 0.2288927184,
+                "sharpe": 1.00595778311,
+                "volatility": 0.227537101699,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.492496
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.27045
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.237054
+                    }
+                ]
+            },
+            {
+                "return": 0.230835474785,
+                "sharpe": 1.00575137816,
+                "volatility": 0.229515444669,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.500936
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.253524
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.24554
+                    }
+                ]
+            },
+            {
+                "return": 0.232778345699,
+                "sharpe": 1.00501694773,
+                "volatility": 0.231616338634,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.509381
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.236594
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.254025
+                    }
+                ]
+            },
+            {
+                "return": 0.234721274409,
+                "sharpe": 1.00378399766,
+                "volatility": 0.233836437875,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.517803
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.219679
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.262518
+                    }
+                ]
+            },
+            {
+                "return": 0.236664153711,
+                "sharpe": 1.0020826671,
+                "volatility": 0.236172285463,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.525846
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.203017
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.271137
+                    }
+                ]
+            },
+            {
+                "return": 0.238606876044,
+                "sharpe": 0.999942484954,
+                "volatility": 0.238620600319,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.535918
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.185003
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.279079
+                    }
+                ]
+            },
+            {
+                "return": 0.240549831983,
+                "sharpe": 0.997397425401,
+                "volatility": 0.241177514456,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.543035
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.168958
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.288007
+                    }
+                ]
+            },
+            {
+                "return": 0.242492703335,
+                "sharpe": 0.994473906588,
+                "volatility": 0.243840186986,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.551459
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.152042
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.296499
+                    }
+                ]
+            },
+            {
+                "return": 0.244435460032,
+                "sharpe": 0.991203158898,
+                "volatility": 0.246604803302,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.559884
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.135126
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.30499
+                    }
+                ]
+            },
+            {
+                "return": 0.246378331322,
+                "sharpe": 0.987613802635,
+                "volatility": 0.249468294858,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.568311
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.118208
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.313481
+                    }
+                ]
+            },
+            {
+                "return": 0.248321226921,
+                "sharpe": 0.983732274742,
+                "volatility": 0.252427650588,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.57832
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.100235
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.321445
+                    }
+                ]
+            },
+            {
+                "return": 0.250264116738,
+                "sharpe": 0.979590928844,
+                "volatility": 0.255478189281,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.585859
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.083909
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.330232
+                    }
+                ]
+            },
+            {
+                "return": 0.252206891149,
+                "sharpe": 0.975211540852,
+                "volatility": 0.258617623545,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.593435
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.067559
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.339006
+                    }
+                ]
+            },
+            {
+                "return": 0.254149766694,
+                "sharpe": 0.97061922546,
+                "volatility": 0.261842914325,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.601658
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.050777
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.347565
+                    }
+                ]
+            },
+            {
+                "return": 0.256092422215,
+                "sharpe": 0.965838118791,
+                "volatility": 0.265150460757,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.610015
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.033905
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.356079
+                    }
+                ]
+            },
+            {
+                "return": 0.25803551234,
+                "sharpe": 0.960890742028,
+                "volatility": 0.268537827512,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.618365
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.017039
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.364596
+                    }
+                ]
+            },
+            {
+                "return": 0.259978322516,
+                "sharpe": 0.955798097819,
+                "volatility": 0.27200129725,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.626974
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.373026
+                    }
+                ]
+            },
+            {
+                "return": 0.261921150006,
+                "sharpe": 0.950183795574,
+                "volatility": 0.275653143346,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.610029
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.389971
+                    }
+                ]
+            },
+            {
+                "return": 0.263864092152,
+                "sharpe": 0.943741244311,
+                "volatility": 0.279593684967,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.593083
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.406917
+                    }
+                ]
+            },
+            {
+                "return": 0.265806919643,
+                "sharpe": 0.93656497429,
+                "volatility": 0.28381044235,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.576138
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.423862
+                    }
+                ]
+            },
+            {
+                "return": 0.267749747133,
+                "sharpe": 0.928746557399,
+                "volatility": 0.28829150967,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.559193
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.440807
+                    }
+                ]
+            },
+            {
+                "return": 0.269692574624,
+                "sharpe": 0.92037469255,
+                "volatility": 0.293024761336,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.542248
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.457752
+                    }
+                ]
+            },
+            {
+                "return": 0.27163551677,
+                "sharpe": 0.911533225393,
+                "volatility": 0.297998481243,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.525302
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.474698
+                    }
+                ]
+            },
+            {
+                "return": 0.273578344261,
+                "sharpe": 0.902302461948,
+                "volatility": 0.303200263546,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.508357
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.491643
+                    }
+                ]
+            },
+            {
+                "return": 0.275521171751,
+                "sharpe": 0.892755491397,
+                "volatility": 0.308618848505,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.491412
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.508588
+                    }
+                ]
+            },
+            {
+                "return": 0.277463999242,
+                "sharpe": 0.882959940468,
+                "volatility": 0.314243021144,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.474467
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.525533
+                    }
+                ]
+            },
+            {
+                "return": 0.279406941388,
+                "sharpe": 0.872976753973,
+                "volatility": 0.320062292743,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.457521
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.542479
+                    }
+                ]
+            },
+            {
+                "return": 0.281349768879,
+                "sharpe": 0.86286260273,
+                "volatility": 0.326065549705,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.440576
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.559424
+                    }
+                ]
+            },
+            {
+                "return": 0.283292596369,
+                "sharpe": 0.852666507204,
+                "volatility": 0.332243138409,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.423631
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.576369
+                    }
+                ]
+            },
+            {
+                "return": 0.28523542386,
+                "sharpe": 0.84243244236,
+                "volatility": 0.338585516794,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.406686
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.593314
+                    }
+                ]
+            },
+            {
+                "return": 0.287178366006,
+                "sharpe": 0.832198470613,
+                "volatility": 0.345083986749,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.38974
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.61026
+                    }
+                ]
+            },
+            {
+                "return": 0.289121193496,
+                "sharpe": 0.82199951994,
+                "volatility": 0.351729151275,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.372795
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.627205
+                    }
+                ]
+            },
+            {
+                "return": 0.291064020987,
+                "sharpe": 0.811864142922,
+                "volatility": 0.358513211262,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.35585
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.64415
+                    }
+                ]
+            },
+            {
+                "return": 0.293006848478,
+                "sharpe": 0.801817328662,
+                "volatility": 0.365428431145,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.338905
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.661095
+                    }
+                ]
+            },
+            {
+                "return": 0.294949675969,
+                "sharpe": 0.791880288837,
+                "volatility": 0.372467505665,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.32196
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.67804
+                    }
+                ]
+            },
+            {
+                "return": 0.296892618114,
+                "sharpe": 0.782070261322,
+                "volatility": 0.379623970885,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.305014
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.694986
+                    }
+                ]
+            },
+            {
+                "return": 0.298835445605,
+                "sharpe": 0.772403178788,
+                "volatility": 0.386890491665,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.288069
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.711931
+                    }
+                ]
+            },
+            {
+                "return": 0.300778273096,
+                "sharpe": 0.762890532573,
+                "volatility": 0.394261378603,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.271124
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.728876
+                    }
+                ]
+            },
+            {
+                "return": 0.302721100587,
+                "sharpe": 0.753542011164,
+                "volatility": 0.401730887066,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.254179
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.745821
+                    }
+                ]
+            },
+            {
+                "return": 0.304664042732,
+                "sharpe": 0.744364669805,
+                "volatility": 0.409294066593,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.237233
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.762767
+                    }
+                ]
+            },
+            {
+                "return": 0.306606870223,
+                "sharpe": 0.735365349837,
+                "volatility": 0.416944951636,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.220288
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.779712
+                    }
+                ]
+            },
+            {
+                "return": 0.308549697714,
+                "sharpe": 0.726547667025,
+                "volatility": 0.424679221636,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.203343
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.796657
+                    }
+                ]
+            },
+            {
+                "return": 0.310492525205,
+                "sharpe": 0.717914402624,
+                "volatility": 0.432492403091,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.186398
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.813602
+                    }
+                ]
+            },
+            {
+                "return": 0.31243546735,
+                "sharpe": 0.709466655278,
+                "volatility": 0.44038076353,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.169452
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.830548
+                    }
+                ]
+            },
+            {
+                "return": 0.314378294841,
+                "sharpe": 0.701205994576,
+                "volatility": 0.44833942846,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.152507
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.847493
+                    }
+                ]
+            },
+            {
+                "return": 0.316321122332,
+                "sharpe": 0.69313162107,
+                "volatility": 0.456365158819,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.135562
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.864438
+                    }
+                ]
+            },
+            {
+                "return": 0.318263949822,
+                "sharpe": 0.685242504747,
+                "volatility": 0.464454477966,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.118617
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.881383
+                    }
+                ]
+            },
+            {
+                "return": 0.320206891968,
+                "sharpe": 0.677536548971,
+                "volatility": 0.47260460333,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.101671
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.898329
+                    }
+                ]
+            },
+            {
+                "return": 0.322149719459,
+                "sharpe": 0.670012501354,
+                "volatility": 0.480811505468,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.084726
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.915274
+                    }
+                ]
+            },
+            {
+                "return": 0.32409254695,
+                "sharpe": 0.662667315353,
+                "volatility": 0.48907278123,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.067781
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.932219
+                    }
+                ]
+            },
+            {
+                "return": 0.32603537444,
+                "sharpe": 0.655498058125,
+                "volatility": 0.497385721283,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.050836
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.949164
+                    }
+                ]
+            },
+            {
+                "return": 0.327978316586,
+                "sharpe": 0.648501110439,
+                "volatility": 0.505748272912,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.03389
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.96611
+                    }
+                ]
+            },
+            {
+                "return": 0.329921144077,
+                "sharpe": 0.641673866793,
+                "volatility": 0.514157052594,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.016945
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 0.983055
+                    }
+                ]
+            },
+            {
+                "return": 0.331863971567,
+                "sharpe": 0.635012309045,
+                "volatility": 0.522610297218,
+                "weights": [
+                    {
+                        "symbol": "AAPL",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "GOOG",
+                        "weight": 0.0
+                    },
+                    {
+                        "symbol": "MSFT",
+                        "weight": -0.0
+                    },
+                    {
+                        "symbol": "FB",
+                        "weight": 1.0
+                    }
+                ]
+            }
+        ]
+    }
+}
