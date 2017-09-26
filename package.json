@@ -6,12 +6,15 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-linechart": "^1.1.9",
-    "react-scripts": "1.0.11"
+    "react-scripts": "1.0.11",
+    "isomorphic-fetch": "0.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://markowitz-cont:5000/",
+  "hot": true
 }

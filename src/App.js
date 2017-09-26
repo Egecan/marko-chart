@@ -4,19 +4,44 @@ import './App.css';
 import LineChart from 'react-linechart';
 import '../node_modules/react-linechart/dist/styles.css';
 import { parseJsonArray, parseGroupingBy } from './utils/Parser'
+import { getData } from './utils/DataService'
 
 const jsonData = require('./testData/data.json');
 const jsonData2 = require('./testData/data2.json');
+const jsonData3 = require('./testData/data3.json');
+
 
 export default class App extends Component {
-    render() {
 
-        let pointsArray = jsonData2.EfficientPortfolios.Points
-        let finalArray = pointsArray.concat(jsonData2.CML.OptimalPorfolio.OP.Portfolio)
-        console.log(finalArray)
+  componentWillMount() {
+    this.state = {
+      loading: true,
+      data: ''
+    }
+    getData().then((json) => {
+      this.setState({
+        data: json,
+        loading: false
+      })
+    })
+    .catch(error => console.log(error) );
+  }
 
-        const jsonDataParsed = parseJsonArray(jsonData.Points, "volatility", "return")
-        const jsonDataParsed2 = parseGroupingBy(finalArray, "volatility", "return", "id")
+  render() {
+
+    if (this.state.loading) {
+      return <h2>Loading...</h2>;
+    }
+
+    let jsonCallArray = this.state.data.EfficientPortfolios.Points
+    //let pointsArray = jsonData2.EfficientPortfolios.Points
+    let finalArray = jsonCallArray.concat(jsonData3.CML.OptimalPorfolio.OP.Portfolio)
+
+    console.log(JSON.stringify(this.state.data, null, 2))
+
+    const jsonDataParsed = parseJsonArray(jsonData.Points, "volatility", "return")
+    const jsonDataParsed2 = parseGroupingBy(finalArray, "volatility", "return", "id")
+    const jsonDataFromCall = parseJsonArray(jsonCallArray, "volatility", "return")
 
         return (
             <div>
@@ -28,11 +53,11 @@ export default class App extends Component {
                         xLabel="Standard Deviation"
                         yLabel="Expected Return"
                         interpolate="cardinal"
-                        pointRadius={1}
+                        pointRadius={2}
                         xMin="0"
-                        //xMax="1"
+                        xMax="1"
                         yMin={0}
-                        //yMax="1"
+                        //yMax={1}
                         onPointHover={ (obj) =>
                             `return: ${obj.y}<br />`
                             + `deviation: ${obj.x}<br />`
