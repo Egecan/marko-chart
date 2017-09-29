@@ -89,9 +89,9 @@ export default class App extends Component {
                             `return: ${obj.y}<br />`
                             + `deviation: ${obj.x}<br />`
                             + `sharpe: ${obj.sharpe}<br />`
-                            + obj.weights && obj.weights !== undefined
+                            + (obj.weights && obj.weights !== undefined
                                 ? obj.weights.map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
-                                : ''
+                                : '')
                         }
                         //showLegends
                         legendPosition="bottom-right"
