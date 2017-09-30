@@ -25,3 +25,4 @@ yarn-error.log*
 .idea/**/libraries
 .idea/vcs.xml
 *.iws
+/.project
