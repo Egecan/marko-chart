@@ -16,6 +16,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://markowitz-cont:5000/",
+  "proxy": "http://markowitz:5000/",
   "hot": true
 }
