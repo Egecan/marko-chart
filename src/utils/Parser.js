@@ -25,7 +25,7 @@ export function parseGroupingBy(data, xDimension, yDimension, groupByDimension, 
 
   const lines = [];
 
-  data.map(d => {
+  data.forEach(d => {
     let key = d[groupByDimension];
     if ( map.has(key) ) { // We already have added a key like this one, so there's already a line for it
       let i = map.get(key); // Get correct index

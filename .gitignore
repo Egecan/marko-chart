@@ -24,5 +24,6 @@ yarn-error.log*
 .idea/dictionaries
 .idea/**/libraries
 .idea/vcs.xml
+.idea/jsLibraryMappings.xml
 *.iws
 /.project

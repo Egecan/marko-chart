@@ -4,33 +4,86 @@ import d3 from "d3";
 import './App.css';
 import LineChart from 'react-linechart';
 import '../node_modules/react-linechart/dist/styles.css';
-import { parseGroupingBy } from './utils/Parser'
-import { getData } from './utils/DataService'
+import { parseGroupingBy } from './utils/Parser';
+import { getData, fileIsIncorrectFiletype, showInvalidFileTypeMessage, fileUpload } from './utils/DataService';
 
-//const jsonData = require('./testData/data4.json');
+const jsonData = require('./testData/data4.json');
+
 
 export default class App extends Component {
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.state = {
+      loading: false,
+      data: jsonData,
+      error: false,
+      file: null
+    }
+    this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
+    this.fileChange = this.fileChange.bind(this)
+    this.onClickLoadData = this.onClickLoadData.bind(this)
+  }
+
+  uploadFormSubmit(e){
+    e.preventDefault() // Stop form submit
+    if (this.state.file == null || fileIsIncorrectFiletype(this.state.file)) {
+      showInvalidFileTypeMessage()
+    }
+    else {
+      this.setState({
+        loading: true,
+        data: '',
+        error: false
+      })
+      fileUpload(this.state.file).then((json) => {
+        this.setState({
+          data: json,
+          loading: false
+        })
+      })
+          .catch(error => {
+            console.log(error)
+            this.setState({
+              loading: false,
+              error: true
+            })
+          });
+      console.log(JSON.stringify(this.state.data, null, 2))
+    }
+  }
+  fileChange(e) {
+    console.log(e)
+    if (e.target.files[0] != null ) {
+        this.setState({file: e.target.files[0]})
+      }
+    else {
+      this.setState({file: null})
+    }
+  }
+
+  onClickLoadData() {
+    this.setState({
       loading: true,
       data: '',
-      error: false
-    }
+      error: false,
+      file: null
+    })
     getData().then((json) => {
       this.setState({
         data: json,
         loading: false
       })
     })
-    .catch(error => {
-      console.log(error)
-      this.setState({
-        loading: false,
-        error: true
-      })
-    });
+        .catch(error => {
+          console.log(error)
+          this.setState({
+            loading: false,
+            error: true
+          })
+        })
   }
+
 
   render() {
 
@@ -41,36 +94,44 @@ export default class App extends Component {
       return <h2>Received an error from server...</h2>;
     }
 
-    const tangentPoint = this.state.data.CML.OptimalPorfolio.OP.Portfolio
-    const riskfreeValue = this.state.data.CML.OptimalPorfolio.riskfree_ret
+      const tangentPoint = this.state.data.CML.OptimalPorfolio.OP.Portfolio
+      const riskfreeValue = this.state.data.CML.OptimalPorfolio.riskfree_ret
 
-    const riskfreePoint = {
-      volatility: 0,
-      return: riskfreeValue,
-      name: tangentPoint.name
-    }
+      const riskfreePoint = {
+        volatility: 0,
+        return: riskfreeValue,
+        name: tangentPoint.name
+      }
 
-    let portfolios = this.state.data.EfficientPortfolios.Points
+      let portfolios = this.state.data.EfficientPortfolios.Points
 
-    const tangentLineContVolatility = portfolios[portfolios.length - 1].volatility
-    const slope = (tangentPoint.return - riskfreeValue) / tangentPoint.volatility
-    const tangentLineContReturn = slope * tangentLineContVolatility + riskfreeValue
+      const tangentLineContVolatility = portfolios[portfolios.length - 1].volatility
+      const slope = (tangentPoint.return - riskfreeValue) / tangentPoint.volatility
+      const tangentLineContReturn = slope * tangentLineContVolatility + riskfreeValue
 
-    const tangentLineContinued = {
-      volatility: tangentLineContVolatility,
-      return: tangentLineContReturn,
-      name: tangentPoint.name
-    }
+      const tangentLineContinued = {
+        volatility: tangentLineContVolatility,
+        return: tangentLineContReturn,
+        name: tangentPoint.name
+      }
 
+      portfolios.push(riskfreePoint, tangentPoint, tangentLineContinued)
 
-    portfolios.push(riskfreePoint, tangentPoint, tangentLineContinued)
+      //console.log(JSON.stringify(this.state.data, null, 2))
 
-    console.log(JSON.stringify(this.state.data, null, 2))
-
-    const dataParsed = parseGroupingBy(portfolios, "volatility", "return", "name")
+      let dataParsed = parseGroupingBy(portfolios, "volatility", "return", "name")
 
         return (
             <div>
+                <div className="upload-button">
+                  <form onSubmit={this.uploadFormSubmit}>
+                    <input type="file" onChange={this.fileChange} />
+                    <button type="submit">Upload</button>
+                  </form>
+                </div>
+              <div>
+                  <button onClick={this.onClickLoadData}>Load Data From Server</button>
+              </div>
                 <div className="App">
                     <h1>Markowitz</h1>
                     <LineChart
