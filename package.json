@@ -1,7 +1,7 @@
 {
   "name": "marko-chart",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",
