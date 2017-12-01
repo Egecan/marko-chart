@@ -7,4 +7,5 @@ COPY . /usr/src/app
 ADD package.json /app/
 RUN npm config set registry https://registry.npmjs.org/
 RUN npm install
-CMD npm start
+ENV HOST=0.0.0.0
+CMD HOST=0.0.0.0 npm start
