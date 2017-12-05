@@ -39,7 +39,8 @@ export default class App extends Component {
       this.setState({
         loading: true,
         data: '',
-        error: false
+        error: false,
+        point: null
       })
       fileUpload(this.state.file, this.state.riskfree).then((json) => {
         this.setState({
@@ -83,7 +84,8 @@ export default class App extends Component {
       loading: true,
       data: '',
       error: false,
-      file: null
+      file: null,
+      point: null
     })
     getData(this.state.riskfree).then((json) => {
       this.setState({
