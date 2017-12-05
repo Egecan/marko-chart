@@ -27,9 +27,10 @@ function handleErrors(response) {
   return response;
 }
 
-export function fileUpload(file){
+export function fileUpload(file, riskfree){
   const formData = new FormData();
-  formData.append('the_file',file)
+  formData.append('the_file', file)
+  formData.append('riskfree', riskfree)
 
   //return  post(url, formData,config)
   return fetch(`/upload`, {

@@ -41,7 +41,7 @@ export default class App extends Component {
         data: '',
         error: false
       })
-      fileUpload(this.state.file).then((json) => {
+      fileUpload(this.state.file, this.state.riskfree).then((json) => {
         this.setState({
           data: json,
           loading: false,
