@@ -28,6 +28,7 @@ export default class App extends Component {
     this.onClickLineChart = this.onClickLineChart.bind(this)
     this.onHoverLineChart = this.onHoverLineChart.bind(this)
     this.updateCml = this.updateCml.bind(this)
+    this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
   }
 
   uploadFormSubmit(e){
@@ -101,6 +102,17 @@ export default class App extends Component {
             error: true
           })
         })
+  }
+
+  downloadObjectAsJson(){
+    if (this.state.data !== '') {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.data));
+      let downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", "export.json");
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    }
   }
 
   onClickLineChart(event, point) {
@@ -225,6 +237,9 @@ export default class App extends Component {
                 legendPosition="bottom-right"
                 data={dataParsed}
             />
+          </div>
+          <div className="download-button">
+            <button onClick={this.downloadObjectAsJson}>Export as JSON</button>
           </div>
         </div>
     );
