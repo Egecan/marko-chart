@@ -29,6 +29,7 @@ export default class App extends Component {
     this.onHoverLineChart = this.onHoverLineChart.bind(this)
     this.updateCml = this.updateCml.bind(this)
     this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
+    this.downloadSinglePoint = this.downloadSinglePoint.bind(this)
   }
 
   uploadFormSubmit(e){
@@ -106,12 +107,25 @@ export default class App extends Component {
 
   downloadObjectAsJson(){
     if (this.state.data !== '') {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.data));
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.data, null, 2));
       let downloadAnchorNode = document.createElement('a');
       downloadAnchorNode.setAttribute("href", dataStr);
       downloadAnchorNode.setAttribute("download", "export.json");
       downloadAnchorNode.click();
       downloadAnchorNode.remove();
+    }
+  }
+
+  downloadSinglePoint(){
+    if (this.state.point && this.state.point !== '') {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.point, null, 2));
+      let downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", "selected-point.json");
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    } else {
+      window.alert("Please pick a point to export from the graph first");
     }
   }
 
@@ -126,7 +140,8 @@ export default class App extends Component {
     + `deviation: ${obj.x}<br />`
     + `sharpe: ${obj.sharpe}<br />`
     + (obj.weights && obj.weights !== undefined
-        ? obj.weights.map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
+        ? [].concat(obj.weights).sort((a,b) => a.weight < b.weight)
+                .map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
         : '')
     )
   }
@@ -238,8 +253,11 @@ export default class App extends Component {
                 data={dataParsed}
             />
           </div>
+          <div className="single-dl-button">
+            <button onClick={this.downloadSinglePoint}>Export Single Point</button>
+          </div>
           <div className="download-button">
-            <button onClick={this.downloadObjectAsJson}>Export as JSON</button>
+            <button onClick={this.downloadObjectAsJson}>Export Whole as JSON</button>
           </div>
         </div>
     );
