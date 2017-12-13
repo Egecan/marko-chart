@@ -198,6 +198,8 @@ export default class App extends Component {
       const userTangentPoint = {
         volatility: this.state.point.x,
         return: this.state.point.y,
+        sharpe: this.state.point.sharpe,
+        weights: this.state.point.weights,
         name: userLineName
       }
 
