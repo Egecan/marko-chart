@@ -60,7 +60,6 @@ export default class App extends Component {
               error: true
             })
           });
-      console.log(JSON.stringify(this.state.data, null, 2))
     }
   }
   fileChange(e) {
@@ -126,7 +125,7 @@ export default class App extends Component {
   downloadSinglePoint(){
     if (this.state.point && this.state.point !== '') {
       let pointSaved = this.state.point
-      pointSaved.weights.sort((a,b) => a.weight < b.weight)
+      pointSaved.weights.sort((a,b) => b.weight - a.weight)
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pointSaved, null, 2));
       let downloadAnchorNode = document.createElement('a');
       downloadAnchorNode.setAttribute("href", dataStr);
@@ -149,7 +148,7 @@ export default class App extends Component {
     + `deviation: ${obj.x}<br />`
     + `sharpe: ${obj.sharpe}<br />`
     + (obj.weights && obj.weights !== undefined
-        ? [].concat(obj.weights).sort((a,b) => a.weight < b.weight)
+        ? [].concat(obj.weights).sort((a,b) => b.weight - a.weight)
                 .map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
         : '')
     )
