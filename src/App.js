@@ -118,7 +118,9 @@ export default class App extends Component {
 
   downloadSinglePoint(){
     if (this.state.point && this.state.point !== '') {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.point, null, 2));
+      let pointSaved = this.state.point
+      pointSaved.weights.sort((a,b) => a.weight < b.weight)
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pointSaved, null, 2));
       let downloadAnchorNode = document.createElement('a');
       downloadAnchorNode.setAttribute("href", dataStr);
       downloadAnchorNode.setAttribute("download", "selected-point.json");
