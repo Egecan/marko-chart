@@ -157,7 +157,7 @@ export default class App extends Component {
   render() {
 
     if (this.state.loading) {
-      return <h2>Loading...</h2>;
+      return <h2>Loading data. This may take a few minutes.</h2>;
     }
     if (this.state.error) {
       return <h2>Received an error from server...</h2>;
