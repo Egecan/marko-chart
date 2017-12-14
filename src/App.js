@@ -20,7 +20,8 @@ export default class App extends Component {
       error: false,
       file: null,
       riskfree: 0.05,
-      point: null
+      point: null,
+      stocks: "CBA.AX,BHP.AX,TLS.AX"
     }
     this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
     this.fileChange = this.fileChange.bind(this)
@@ -28,6 +29,7 @@ export default class App extends Component {
     this.onClickLineChart = this.onClickLineChart.bind(this)
     this.onHoverLineChart = this.onHoverLineChart.bind(this)
     this.updateCml = this.updateCml.bind(this)
+    this.updateStocks = this.updateStocks.bind(this)
     this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
     this.downloadSinglePoint = this.downloadSinglePoint.bind(this)
   }
@@ -81,6 +83,11 @@ export default class App extends Component {
     }
   }
 
+  updateStocks(e) {
+    console.log(e.target.value)
+    this.setState({stocks:e.target.value})
+  }
+
   onClickLoadData() {
     this.setState({
       loading: true,
@@ -89,7 +96,7 @@ export default class App extends Component {
       file: null,
       point: null
     })
-    getData(this.state.riskfree).then((json) => {
+    getData(this.state.riskfree, this.state.stocks).then((json) => {
       this.setState({
         data: json,
         loading: false,
@@ -227,6 +234,10 @@ export default class App extends Component {
             <label className="cml">
               CML:
               <input type="number" defaultValue={this.state.riskfree} min="0" max="0.3" step="0.001" onChange={this.updateCml} />
+            </label>
+            <label className="stocks">
+              Comma Separated Stocks List:
+              <input type="text" value={this.state.stocks} onChange={this.updateStocks} />
             </label>
             <button onClick={this.onClickLoadData}>Load Data From Server</button>
           </div>

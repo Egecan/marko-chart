@@ -10,8 +10,8 @@ export function showInvalidFileTypeMessage(){
   window.alert("Tried to upload invalid filetype. Only " + allowedFileTypes + " is allowed");
 }
 
-export function getData(riskfree) {
-  const url = `/ef?source=google&symbols=CBA.AX,BHP.AX,TLS.AX&riskfree=` + riskfree
+export function getData(riskfree, stocks) {
+  const url = `/ef?source=google&symbols=` + stocks +`&riskfree=` + riskfree
   return fetch(url)
       .then(handleErrors)
       .then(response =>{
