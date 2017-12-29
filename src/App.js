@@ -20,7 +20,8 @@ export default class App extends Component {
       error: false,
       file: null,
       riskfree: 0.05,
-      point: null
+      point: null,
+      stocks: "CBA.AX,BHP.AX,TLS.AX"
     }
     this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
     this.fileChange = this.fileChange.bind(this)
@@ -28,7 +29,9 @@ export default class App extends Component {
     this.onClickLineChart = this.onClickLineChart.bind(this)
     this.onHoverLineChart = this.onHoverLineChart.bind(this)
     this.updateCml = this.updateCml.bind(this)
+    this.updateStocks = this.updateStocks.bind(this)
     this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
+    this.downloadSinglePoint = this.downloadSinglePoint.bind(this)
   }
 
   uploadFormSubmit(e){
@@ -57,7 +60,6 @@ export default class App extends Component {
               error: true
             })
           });
-      console.log(JSON.stringify(this.state.data, null, 2))
     }
   }
   fileChange(e) {
@@ -80,6 +82,11 @@ export default class App extends Component {
     }
   }
 
+  updateStocks(e) {
+    console.log(e.target.value)
+    this.setState({stocks:e.target.value})
+  }
+
   onClickLoadData() {
     this.setState({
       loading: true,
@@ -88,7 +95,7 @@ export default class App extends Component {
       file: null,
       point: null
     })
-    getData(this.state.riskfree).then((json) => {
+    getData(this.state.riskfree, this.state.stocks).then((json) => {
       this.setState({
         data: json,
         loading: false,
@@ -106,12 +113,27 @@ export default class App extends Component {
 
   downloadObjectAsJson(){
     if (this.state.data !== '') {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.data));
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.data, null, 2));
       let downloadAnchorNode = document.createElement('a');
       downloadAnchorNode.setAttribute("href", dataStr);
       downloadAnchorNode.setAttribute("download", "export.json");
       downloadAnchorNode.click();
       downloadAnchorNode.remove();
+    }
+  }
+
+  downloadSinglePoint(){
+    if (this.state.point && this.state.point !== '') {
+      let pointSaved = this.state.point
+      pointSaved.weights.sort((a,b) => b.weight - a.weight)
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pointSaved, null, 2));
+      let downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", "selected-point.json");
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    } else {
+      window.alert("Please pick a point to export from the graph first");
     }
   }
 
@@ -126,7 +148,8 @@ export default class App extends Component {
     + `deviation: ${obj.x}<br />`
     + `sharpe: ${obj.sharpe}<br />`
     + (obj.weights && obj.weights !== undefined
-        ? obj.weights.map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
+        ? [].concat(obj.weights).sort((a,b) => b.weight - a.weight)
+                .map(item => { return `${item.symbol}: ${item.weight}<br />` }).join('')
         : '')
     )
   }
@@ -134,7 +157,7 @@ export default class App extends Component {
   render() {
 
     if (this.state.loading) {
-      return <h2>Loading...</h2>;
+      return <h2>Loading data. This may take a few minutes.</h2>;
     }
     if (this.state.error) {
       return <h2>Received an error from server...</h2>;
@@ -183,6 +206,8 @@ export default class App extends Component {
       const userTangentPoint = {
         volatility: this.state.point.x,
         return: this.state.point.y,
+        sharpe: this.state.point.sharpe,
+        weights: this.state.point.weights,
         name: userLineName
       }
 
@@ -208,6 +233,10 @@ export default class App extends Component {
             <label className="cml">
               CML:
               <input type="number" defaultValue={this.state.riskfree} min="0" max="0.3" step="0.001" onChange={this.updateCml} />
+            </label>
+            <label className="stocks">
+              Comma Separated Stocks List:
+              <input type="text" value={this.state.stocks} onChange={this.updateStocks} />
             </label>
             <button onClick={this.onClickLoadData}>Load Data From Server</button>
           </div>
@@ -238,8 +267,11 @@ export default class App extends Component {
                 data={dataParsed}
             />
           </div>
+          <div className="single-dl-button">
+            <button onClick={this.downloadSinglePoint}>Export Single Point</button>
+          </div>
           <div className="download-button">
-            <button onClick={this.downloadObjectAsJson}>Export as JSON</button>
+            <button onClick={this.downloadObjectAsJson}>Export Whole as JSON</button>
           </div>
         </div>
     );

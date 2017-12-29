@@ -23,7 +23,17 @@
     margin-right: 2%;
 }
 
+.stocks {
+    margin-right: 2%;
+}
+
 .download-button {
     margin-left: 15%;
+    margin-top: 2%;
+}
+
+.single-dl-button {
+    float: left;
+    margin-left: 5%;
     margin-top: 2%;
 }
