@@ -21,7 +21,9 @@ export default class App extends Component {
       file: null,
       riskfree: 0.05,
       point: null,
-      stocks: "CBA.AX,BHP.AX,TLS.AX"
+      stocks: "CBA.AX,BHP.AX,TLS.AX",
+      source: "yahoo",
+      upload1: false
     }
     this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
     this.fileChange = this.fileChange.bind(this)
@@ -30,6 +32,8 @@ export default class App extends Component {
     this.onHoverLineChart = this.onHoverLineChart.bind(this)
     this.updateCml = this.updateCml.bind(this)
     this.updateStocks = this.updateStocks.bind(this)
+    this.updateSource = this.updateSource.bind(this)
+    this.clickTypeCheckbox = this.clickTypeCheckbox.bind(this)
     this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
     this.downloadSinglePoint = this.downloadSinglePoint.bind(this)
   }
@@ -46,7 +50,7 @@ export default class App extends Component {
         error: false,
         point: null
       })
-      fileUpload(this.state.file, this.state.riskfree).then((json) => {
+      fileUpload(this.state.file, this.state.riskfree, this.state.upload1).then((json) => {
         this.setState({
           data: json,
           loading: false,
@@ -87,6 +91,15 @@ export default class App extends Component {
     this.setState({stocks:e.target.value})
   }
 
+  updateSource(e) {
+    console.log(e.target.value)
+    this.setState({source:e.target.value})
+  }
+
+  clickTypeCheckbox(e) {
+    this.setState({upload1:e.target.value})
+  }
+
   onClickLoadData() {
     this.setState({
       loading: true,
@@ -95,7 +108,7 @@ export default class App extends Component {
       file: null,
       point: null
     })
-    getData(this.state.riskfree, this.state.stocks).then((json) => {
+    getData(this.state.riskfree, this.state.stocks, this.state.source).then((json) => {
       this.setState({
         data: json,
         loading: false,
@@ -159,6 +172,7 @@ export default class App extends Component {
     if (this.state.loading) {
       return <h2>Loading data. This may take a few minutes.</h2>;
     }
+
     if (this.state.error) {
       return <h2>Received an error from server...</h2>;
     }
@@ -238,11 +252,22 @@ export default class App extends Component {
               Comma Separated Stocks List:
               <input type="text" value={this.state.stocks} onChange={this.updateStocks} />
             </label>
+            <label className="stocks">
+              Source:
+            <select onChange={this.updateSource}>
+              <option value="yahoo">yahoo</option>
+              <option value="google">google</option>
+            </select>
+            </label>
             <button onClick={this.onClickLoadData}>Load Data From Server</button>
           </div>
           <div className="upload-button">
             <form onSubmit={this.uploadFormSubmit}>
               <input type="file" onChange={this.fileChange} />
+              <label className="file-type">
+                Upload1?
+                <input type="checkbox" onClick={this.clickTypeCheckbox} />
+              </label>
               <button type="submit">Upload</button>
             </form>
           </div>
