@@ -5,7 +5,7 @@ import './App.css';
 import LineChart from 'react-linechart';
 import '../node_modules/react-linechart/dist/styles.css';
 import { parseGroupingBy } from './utils/Parser';
-import { getData, fileIsIncorrectFiletype, showInvalidFileTypeMessage, fileUpload } from './utils/DataService';
+import { getData, fileIsIncorrectFiletype, showInvalidFileTypeMessage, fileUpload, logErrorJson } from './utils/DataService';
 
 const jsonData = require('./testData/data4.json');
 
@@ -51,6 +51,7 @@ export default class App extends Component {
         point: null
       })
       fileUpload(this.state.file, this.state.riskfree, this.state.upload1).then((json) => {
+        logErrorJson(json)
         this.setState({
           data: json,
           loading: false,
@@ -109,6 +110,7 @@ export default class App extends Component {
       point: null
     })
     getData(this.state.riskfree, this.state.stocks, this.state.source).then((json) => {
+      logErrorJson(json)
       this.setState({
         data: json,
         loading: false,
