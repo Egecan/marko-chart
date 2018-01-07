@@ -17,7 +17,6 @@ export function getData(riskfree, stocks, source) {
       .then(response =>{
         return response.json()
       })
-      //.then(function(parsedData){})
 }
 
 function handleErrors(response) {
@@ -27,14 +26,20 @@ function handleErrors(response) {
   return response;
 }
 
+export function logErrorJson(json) {
+  if(json != null && ((json.EfficientPortfolios != null && json.EfficientPortfolios.error)
+      || (json.CML != null && json.CML.error))) {
+    console.log(json)
+  }
+}
+
 export function fileUpload(file, riskfree, upload1){
   const formData = new FormData();
   formData.append('the_file', file)
   formData.append('riskfree', riskfree)
 
-  const req = upload1 ? `/upload1` : `/upload`
-  //return  post(url, formData,config)
-  return fetch(req, {
+  const url = upload1 ? `/upload1` : `/upload`
+  return fetch(url, {
     method: 'post',
     body: formData
   })
