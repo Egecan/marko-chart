@@ -49,7 +49,14 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
-  "proxy": "http://markowitz:5000/",
+  "proxy": {
+    "/": {
+      "target": "http://markowitz:5000",
+      "ws": true,
+      "proxyTimeout": 600000,
+      "timeOut": 600000
+    }
+  },
   "hot": true,
   "jest": {
     "collectCoverageFrom": [
