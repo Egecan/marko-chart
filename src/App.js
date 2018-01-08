@@ -97,8 +97,8 @@ export default class App extends Component {
     this.setState({source:e.target.value})
   }
 
-  clickTypeCheckbox(e) {
-    this.setState({upload1:e.target.value})
+  clickTypeCheckbox() {
+    this.setState({upload1:!this.state.upload1})
   }
 
   onClickLoadData() {
