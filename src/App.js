@@ -5,7 +5,10 @@ import './App.css';
 import LineChart from 'react-linechart';
 import '../node_modules/react-linechart/dist/styles.css';
 import { parseGroupingBy } from './utils/Parser';
-import { getData, fileIsIncorrectFiletype, showInvalidFileTypeMessage, fileUpload, logErrorJson } from './utils/DataService';
+import {
+  getData, fileIsIncorrectFiletype, showInvalidFileTypeMessage, fileUpload, logErrorJson,
+  pollServer, doesJsonHaveExpectedContent
+} from './utils/DataService';
 
 const jsonData = require('./testData/data4.json');
 
@@ -23,7 +26,7 @@ export default class App extends Component {
       point: null,
       stocks: "CBA.AX,BHP.AX,TLS.AX",
       source: "yahoo",
-      upload1: false
+      filetype: "upload"
     }
     this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
     this.fileChange = this.fileChange.bind(this)
@@ -33,9 +36,36 @@ export default class App extends Component {
     this.updateCml = this.updateCml.bind(this)
     this.updateStocks = this.updateStocks.bind(this)
     this.updateSource = this.updateSource.bind(this)
-    this.clickTypeCheckbox = this.clickTypeCheckbox.bind(this)
+    this.updateFileType = this.updateFileType.bind(this)
     this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
     this.downloadSinglePoint = this.downloadSinglePoint.bind(this)
+    this.pollServerForResult = this.pollServerForResult.bind(this)
+  }
+
+  pollServerForResult(uuid) {
+
+    setTimeout(() => {
+
+      pollServer(uuid).then((json) => {
+        if (doesJsonHaveExpectedContent(json)) {
+          logErrorJson(json)
+          this.setState({
+            data: json,
+            loading: false,
+            riskfree: json.CML.OptimalPorfolio.riskfree_ret
+          })
+        }
+        else if (json.response && json.response.taskexists === false) {
+          this.setState({
+            error: true,
+            loading: false
+          })
+        }
+        else {
+          this.pollServerForResult(uuid)
+        }
+      })
+    }, 10000)
   }
 
   uploadFormSubmit(e){
@@ -50,13 +80,19 @@ export default class App extends Component {
         error: false,
         point: null
       })
-      fileUpload(this.state.file, this.state.riskfree, this.state.upload1).then((json) => {
-        logErrorJson(json)
-        this.setState({
-          data: json,
-          loading: false,
-          riskfree: json.CML.OptimalPorfolio.riskfree_ret
-        })
+      fileUpload(this.state.file, this.state.riskfree, this.state.filetype).then((json) => {
+        if (this.state.filetype === "uploadasync") {
+          const uuid = json.response.uid;
+          this.pollServerForResult(uuid)
+        }
+        else {
+          logErrorJson(json)
+          this.setState({
+            data: json,
+            loading: false,
+            riskfree: json.CML.OptimalPorfolio.riskfree_ret
+          })
+        }
       })
           .catch(error => {
             console.log(error)
@@ -68,7 +104,6 @@ export default class App extends Component {
     }
   }
   fileChange(e) {
-    //console.log(e)
     if (e.target.files[0] != null ) {
         this.setState({file: e.target.files[0]})
       }
@@ -97,8 +132,9 @@ export default class App extends Component {
     this.setState({source:e.target.value})
   }
 
-  clickTypeCheckbox() {
-    this.setState({upload1:!this.state.upload1})
+  updateFileType(e) {
+    console.log(e.target.value)
+    this.setState({filetype:e.target.value})
   }
 
   onClickLoadData() {
@@ -256,7 +292,7 @@ export default class App extends Component {
             </label>
             <label className="stocks">
               Source:
-            <select onChange={this.updateSource}>
+            <select value={this.state.source} onChange={this.updateSource}>
               <option value="yahoo">yahoo</option>
               <option value="google">google</option>
             </select>
@@ -267,8 +303,12 @@ export default class App extends Component {
             <form onSubmit={this.uploadFormSubmit}>
               <input type="file" onChange={this.fileChange} />
               <label className="file-type">
-                Upload1?
-                <input type="checkbox" onClick={this.clickTypeCheckbox} />
+                Upload Type:
+                <select value={this.state.filetype} onChange={this.updateFileType}>
+                  <option value="upload">upload</option>
+                  <option value="upload1">upload1</option>
+                  <option value="uploadasync">uploadasync</option>
+                </select>
               </label>
               <button type="submit">Upload</button>
             </form>
