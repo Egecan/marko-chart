@@ -19,6 +19,15 @@ export function getData(riskfree, stocks, source) {
       })
 }
 
+export function pollServer(uuid) {
+  const url = `/getasynctaskresult?uuid=` + uuid
+  return fetch(url)
+    .then(handleErrors)
+    .then(response =>{
+      return response.json()
+    })
+}
+
 function handleErrors(response) {
   if (!response.ok) {
     throw Error(response.statusText);
@@ -26,20 +35,27 @@ function handleErrors(response) {
   return response;
 }
 
+export function doesJsonHaveExpectedContent(json) {
+  return (json != null && json.EfficientPortfolios != null && json.CML != null)
+}
+
+export function doesJsonHaveError(json) {
+  return (json != null && ((json.EfficientPortfolios != null && json.EfficientPortfolios.error)
+      || (json.CML != null && json.CML.error)))
+}
+
 export function logErrorJson(json) {
-  if(json != null && ((json.EfficientPortfolios != null && json.EfficientPortfolios.error)
-      || (json.CML != null && json.CML.error))) {
+  if(doesJsonHaveError) {
     console.log(json)
   }
 }
 
-export function fileUpload(file, riskfree, upload1){
+export function fileUpload(file, riskfree, filetype){
   const formData = new FormData();
   formData.append('the_file', file)
   formData.append('riskfree', riskfree)
 
-  const url = upload1 ? `/upload1` : `/upload`
-  return fetch(url, {
+  return fetch(filetype, {
     method: 'post',
     body: formData
   })
