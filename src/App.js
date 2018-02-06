@@ -26,7 +26,7 @@ export default class App extends Component {
       point: null,
       stocks: "CBA.AX,BHP.AX,TLS.AX",
       source: "yahoo",
-      filetype: "upload"
+      filetype: "uploadasync"
     }
     this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
     this.fileChange = this.fileChange.bind(this)
