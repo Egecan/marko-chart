@@ -26,7 +26,8 @@ export default class App extends Component {
       point: null,
       stocks: "CBA.AX,BHP.AX,TLS.AX",
       source: "yahoo",
-      filetype: "uploadasync"
+      filetype: "uploadasync",
+      minutes: 0
     }
     this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
     this.fileChange = this.fileChange.bind(this)
@@ -40,6 +41,8 @@ export default class App extends Component {
     this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
     this.downloadSinglePoint = this.downloadSinglePoint.bind(this)
     this.pollServerForResult = this.pollServerForResult.bind(this)
+    this.getLoadingMessage = this.getLoadingMessage.bind(this)
+    this.updateMinutes = this.updateMinutes.bind(this)
   }
 
   pollServerForResult(uuid) {
@@ -68,6 +71,23 @@ export default class App extends Component {
     }, 10000)
   }
 
+  updateMinutes() {
+    this.setState({
+      minutes: ++this.state.minutes
+    })
+  }
+
+  getLoadingMessage() {
+    setTimeout(() => this.updateMinutes(), 60000);
+    if (this.state.minutes === 0) {
+      return "Processing request..."
+    } else if (this.state.minutes === 1) {
+      return "So far it has taken 1 minute, still processing..."
+    } else {
+      return "So far it has taken " + this.state.minutes + " minutes, still processing..."
+    }
+  }
+
   uploadFormSubmit(e){
     e.preventDefault() // Stop form submit
     if (this.state.file == null || fileIsIncorrectFiletype(this.state.file)) {
@@ -78,7 +98,8 @@ export default class App extends Component {
         loading: true,
         data: '',
         error: false,
-        point: null
+        point: null,
+        minutes: 0
       })
       fileUpload(this.state.file, this.state.riskfree, this.state.filetype).then((json) => {
         if (this.state.filetype === "uploadasync") {
@@ -143,7 +164,8 @@ export default class App extends Component {
       data: '',
       error: false,
       file: null,
-      point: null
+      point: null,
+      minutes: 0
     })
     getData(this.state.riskfree, this.state.stocks, this.state.source).then((json) => {
       logErrorJson(json)
@@ -208,7 +230,7 @@ export default class App extends Component {
   render() {
 
     if (this.state.loading) {
-      return <h2>Loading data. This may take a few minutes.</h2>;
+      return <h2>{this.getLoadingMessage()}</h2>
     }
 
     if (this.state.error) {
