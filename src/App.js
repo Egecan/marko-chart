@@ -5,7 +5,10 @@ import './App.css';
 import LineChart from 'react-linechart';
 import '../node_modules/react-linechart/dist/styles.css';
 import { parseGroupingBy } from './utils/Parser';
-import { getData, fileIsIncorrectFiletype, showInvalidFileTypeMessage, fileUpload } from './utils/DataService';
+import {
+  getData, fileIsIncorrectFiletype, showInvalidFileTypeMessage, fileUpload, logErrorJson,
+  pollServer, doesJsonHaveExpectedContent
+} from './utils/DataService';
 
 const jsonData = require('./testData/data4.json');
 
@@ -21,7 +24,10 @@ export default class App extends Component {
       file: null,
       riskfree: 0.05,
       point: null,
-      stocks: "CBA.AX,BHP.AX,TLS.AX"
+      stocks: "CBA.AX,BHP.AX,TLS.AX",
+      source: "yahoo",
+      filetype: "uploadasync",
+      minutes: 0
     }
     this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
     this.fileChange = this.fileChange.bind(this)
@@ -30,8 +36,56 @@ export default class App extends Component {
     this.onHoverLineChart = this.onHoverLineChart.bind(this)
     this.updateCml = this.updateCml.bind(this)
     this.updateStocks = this.updateStocks.bind(this)
+    this.updateSource = this.updateSource.bind(this)
+    this.updateFileType = this.updateFileType.bind(this)
     this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
     this.downloadSinglePoint = this.downloadSinglePoint.bind(this)
+    this.pollServerForResult = this.pollServerForResult.bind(this)
+    this.getLoadingMessage = this.getLoadingMessage.bind(this)
+    this.updateMinutes = this.updateMinutes.bind(this)
+  }
+
+  pollServerForResult(uuid) {
+
+    setTimeout(() => {
+
+      pollServer(uuid).then((json) => {
+        if (doesJsonHaveExpectedContent(json)) {
+          logErrorJson(json)
+          this.setState({
+            data: json,
+            loading: false,
+            riskfree: json.CML.OptimalPorfolio.riskfree_ret
+          })
+        }
+        else if (json.response && json.response.taskexists === false) {
+          this.setState({
+            error: true,
+            loading: false
+          })
+        }
+        else {
+          this.pollServerForResult(uuid)
+        }
+      })
+    }, 10000)
+  }
+
+  updateMinutes() {
+    this.setState({
+      minutes: ++this.state.minutes
+    })
+  }
+
+  getLoadingMessage() {
+    setTimeout(() => this.updateMinutes(), 60000);
+    if (this.state.minutes === 0) {
+      return "Processing request..."
+    } else if (this.state.minutes === 1) {
+      return "So far it has taken 1 minute, still processing..."
+    } else {
+      return "So far it has taken " + this.state.minutes + " minutes, still processing..."
+    }
   }
 
   uploadFormSubmit(e){
@@ -44,14 +98,22 @@ export default class App extends Component {
         loading: true,
         data: '',
         error: false,
-        point: null
+        point: null,
+        minutes: 0
       })
-      fileUpload(this.state.file, this.state.riskfree).then((json) => {
-        this.setState({
-          data: json,
-          loading: false,
-          riskfree: json.CML.OptimalPorfolio.riskfree_ret
-        })
+      fileUpload(this.state.file, this.state.riskfree, this.state.filetype).then((json) => {
+        if (this.state.filetype === "uploadasync") {
+          const uuid = json.response.uid;
+          this.pollServerForResult(uuid)
+        }
+        else {
+          logErrorJson(json)
+          this.setState({
+            data: json,
+            loading: false,
+            riskfree: json.CML.OptimalPorfolio.riskfree_ret
+          })
+        }
       })
           .catch(error => {
             console.log(error)
@@ -63,7 +125,6 @@ export default class App extends Component {
     }
   }
   fileChange(e) {
-    //console.log(e)
     if (e.target.files[0] != null ) {
         this.setState({file: e.target.files[0]})
       }
@@ -87,15 +148,27 @@ export default class App extends Component {
     this.setState({stocks:e.target.value})
   }
 
+  updateSource(e) {
+    console.log(e.target.value)
+    this.setState({source:e.target.value})
+  }
+
+  updateFileType(e) {
+    console.log(e.target.value)
+    this.setState({filetype:e.target.value})
+  }
+
   onClickLoadData() {
     this.setState({
       loading: true,
       data: '',
       error: false,
       file: null,
-      point: null
+      point: null,
+      minutes: 0
     })
-    getData(this.state.riskfree, this.state.stocks).then((json) => {
+    getData(this.state.riskfree, this.state.stocks, this.state.source).then((json) => {
+      logErrorJson(json)
       this.setState({
         data: json,
         loading: false,
@@ -157,8 +230,9 @@ export default class App extends Component {
   render() {
 
     if (this.state.loading) {
-      return <h2>Loading data. This may take a few minutes.</h2>;
+      return <h2>{this.getLoadingMessage()}</h2>
     }
+
     if (this.state.error) {
       return <h2>Received an error from server...</h2>;
     }
@@ -238,11 +312,26 @@ export default class App extends Component {
               Comma Separated Stocks List:
               <input type="text" value={this.state.stocks} onChange={this.updateStocks} />
             </label>
+            <label className="stocks">
+              Source:
+            <select value={this.state.source} onChange={this.updateSource}>
+              <option value="yahoo">yahoo</option>
+              <option value="google">google</option>
+            </select>
+            </label>
             <button onClick={this.onClickLoadData}>Load Data From Server</button>
           </div>
           <div className="upload-button">
             <form onSubmit={this.uploadFormSubmit}>
               <input type="file" onChange={this.fileChange} />
+              <label className="file-type">
+                Upload Type:
+                <select value={this.state.filetype} onChange={this.updateFileType}>
+                  <option value="upload">upload</option>
+                  <option value="upload1">upload1</option>
+                  <option value="uploadasync">uploadasync</option>
+                </select>
+              </label>
               <button type="submit">Upload</button>
             </form>
           </div>

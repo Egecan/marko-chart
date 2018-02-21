@@ -10,14 +10,22 @@ export function showInvalidFileTypeMessage(){
   window.alert("Tried to upload invalid filetype. Only " + allowedFileTypes + " is allowed");
 }
 
-export function getData(riskfree, stocks) {
-  const url = `/ef?source=google&symbols=` + stocks +`&riskfree=` + riskfree
+export function getData(riskfree, stocks, source) {
+  const url = `/ef?source=` + source + `&symbols=` + stocks +`&riskfree=` + riskfree
   return fetch(url)
       .then(handleErrors)
       .then(response =>{
         return response.json()
       })
-      //.then(function(parsedData){})
+}
+
+export function pollServer(uuid) {
+  const url = `/getasynctaskresult?uuid=` + uuid
+  return fetch(url)
+    .then(handleErrors)
+    .then(response =>{
+      return response.json()
+    })
 }
 
 function handleErrors(response) {
@@ -27,13 +35,27 @@ function handleErrors(response) {
   return response;
 }
 
-export function fileUpload(file, riskfree){
+export function doesJsonHaveExpectedContent(json) {
+  return (json != null && json.EfficientPortfolios != null && json.CML != null)
+}
+
+export function doesJsonHaveError(json) {
+  return (json != null && ((json.EfficientPortfolios != null && json.EfficientPortfolios.error)
+      || (json.CML != null && json.CML.error)))
+}
+
+export function logErrorJson(json) {
+  if(doesJsonHaveError) {
+    console.log(json)
+  }
+}
+
+export function fileUpload(file, riskfree, filetype){
   const formData = new FormData();
   formData.append('the_file', file)
   formData.append('riskfree', riskfree)
 
-  //return  post(url, formData,config)
-  return fetch(`/upload`, {
+  return fetch(filetype, {
     method: 'post',
     body: formData
   })
