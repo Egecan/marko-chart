@@ -1,13 +1,18 @@
 import fetch from 'isomorphic-fetch';
 
-const allowedFileTypes = ["text/csv"];
+export const allowedFileTypes = ["text/csv"];
+export const allowedJsonTypes = ["application/json"]
 
-export function fileIsIncorrectFiletype(file) {
+export function fileIsIncorrectFileType(file) {
   return (allowedFileTypes.indexOf(file.type) === -1)
 }
 
-export function showInvalidFileTypeMessage(){
-  window.alert("Tried to upload invalid filetype. Only " + allowedFileTypes + " is allowed");
+export function fileIsIncorrectJsonType(file) {
+  return (allowedJsonTypes.indexOf(file.type) === -1)
+}
+
+export function showInvalidFileTypeMessage(allowedType){
+  window.alert("Tried to upload invalid filetype. Only " + allowedType + " is allowed");
 }
 
 export function getData(riskfree, stocks, source) {

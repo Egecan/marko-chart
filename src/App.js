@@ -6,8 +6,8 @@ import LineChart from 'react-linechart';
 import '../node_modules/react-linechart/dist/styles.css';
 import { parseGroupingBy } from './utils/Parser';
 import {
-  getData, fileIsIncorrectFiletype, showInvalidFileTypeMessage, fileUpload, logErrorJson,
-  pollServer, doesJsonHaveExpectedContent
+  getData, fileIsIncorrectFileType, showInvalidFileTypeMessage, fileUpload, logErrorJson,
+  pollServer, doesJsonHaveExpectedContent, allowedFileTypes, allowedJsonTypes, fileIsIncorrectJsonType
 } from './utils/DataService';
 
 const jsonData = require('./testData/data4.json');
@@ -93,8 +93,8 @@ export default class App extends Component {
 
   uploadFormSubmit(e){
     e.preventDefault() // Stop form submit
-    if (this.state.file == null || fileIsIncorrectFiletype(this.state.file)) {
-      showInvalidFileTypeMessage()
+    if (this.state.file == null || fileIsIncorrectFileType(this.state.file)) {
+      showInvalidFileTypeMessage(allowedFileTypes)
     }
     else {
       this.setState({
@@ -139,7 +139,6 @@ export default class App extends Component {
   uploadJson(e){
     e.preventDefault()
     let jsonfile = JSON.parse(this.state.jsonfile)
-    console.log(jsonfile)
     if(doesJsonHaveExpectedContent(jsonfile)) {
       this.setState({
         error: false,
@@ -155,7 +154,9 @@ export default class App extends Component {
 
   jsonFileChange(e) {
     let file = e.target.files[0]
-    if (file != null) {
+    if (file == null || fileIsIncorrectJsonType(file)) {
+      showInvalidFileTypeMessage(allowedJsonTypes)
+    } else {
       let that = this
       let reader = new FileReader();
       reader.onload = function (evt) {
