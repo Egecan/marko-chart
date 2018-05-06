@@ -22,6 +22,7 @@ export default class App extends Component {
       data: jsonData,
       error: false,
       file: null,
+      jsonfile: null,
       riskfree: 0.05,
       point: null,
       stocks: "CBA.AX,BHP.AX,TLS.AX",
@@ -31,6 +32,8 @@ export default class App extends Component {
     }
     this.uploadFormSubmit = this.uploadFormSubmit.bind(this)
     this.fileChange = this.fileChange.bind(this)
+    this.jsonFileChange = this.jsonFileChange.bind(this)
+    this.uploadJson = this.uploadJson.bind(this)
     this.onClickLoadData = this.onClickLoadData.bind(this)
     this.onClickLineChart = this.onClickLineChart.bind(this)
     this.onHoverLineChart = this.onHoverLineChart.bind(this)
@@ -126,11 +129,43 @@ export default class App extends Component {
   }
   fileChange(e) {
     if (e.target.files[0] != null ) {
-        this.setState({file: e.target.files[0]})
+      this.setState({file: e.target.files[0]})
       }
     else {
       this.setState({file: null})
     }
+  }
+
+  uploadJson(e){
+    e.preventDefault()
+    let jsonfile = JSON.parse(this.state.jsonfile)
+    console.log(jsonfile)
+    if(doesJsonHaveExpectedContent(jsonfile)) {
+      this.setState({
+        error: false,
+        point: null,
+        data: jsonfile,
+        loading: false,
+        riskfree: jsonfile.CML.OptimalPorfolio.riskfree_ret
+      })
+    } else {
+      window.alert("Unexpected json format");
+    }
+  }
+
+  jsonFileChange(e) {
+    let file = e.target.files[0]
+    if (file != null) {
+      let that = this
+      let reader = new FileReader();
+      reader.onload = function (evt) {
+        that.displayData(evt.target.result)
+      }
+      reader.readAsText(file)
+    }
+  }
+  displayData(content) {
+    this.setState({jsonfile: content});
   }
 
   updateCml(e) {
@@ -164,6 +199,7 @@ export default class App extends Component {
       data: '',
       error: false,
       file: null,
+      jsonfile: null,
       point: null,
       minutes: 0
     })
@@ -332,7 +368,13 @@ export default class App extends Component {
                   <option value="uploadasync">uploadasync</option>
                 </select>
               </label>
-              <button type="submit">Upload</button>
+              <button type="submit">Upload csv</button>
+            </form>
+          </div>
+          <div className="upload-button">
+            <form onSubmit={this.uploadJson}>
+              <input type="file" onChange={this.jsonFileChange} />
+              <button type="submit">Upload previously calculated JSON</button>
             </form>
           </div>
           <div className="App">
