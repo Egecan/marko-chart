@@ -160,12 +160,12 @@ export default class App extends Component {
       let that = this
       let reader = new FileReader();
       reader.onload = function (evt) {
-        that.displayData(evt.target.result)
+        that.setJson(evt.target.result)
       }
       reader.readAsText(file)
     }
   }
-  displayData(content) {
+  setJson(content) {
     this.setState({jsonfile: content});
   }
 
