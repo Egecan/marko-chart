@@ -1,42 +1,53 @@
 .App {
-  margin-top: 5%;
-  text-align: center;
+    margin-top: 3%;
+    padding-left: 5%;
+    float: left;
+}
+
+.app-label {
+    margin-top: 4%;
+    margin-left: 30%;
+    margin-bottom: -2%;
 }
 
 .svg-line-chart-tooltip {
-  width: auto !important;
-  text-align: left !important;
+    width: auto !important;
+    text-align: left !important;
 }
 
 .upload-button {
-  margin-left: 5%;
-  margin-top: 2%;
+    margin-left: 5%;
+    margin-top: 0.5%;
+}
+
+.button-header {
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+.button-header-with-gap {
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
 .file-type {
     margin-right: 3%;
 }
 
-.load-button {
-    margin-left: 5%;
-    margin-top: 1%;
+.button-container {
+    float: left;
+    margin-left: 4%;
+    margin-top: 8%;
 }
 
 .cml {
-    margin-right: 2%;
-}
-
-.stocks {
-    margin-right: 2%;
-}
-
-.download-button {
-    margin-left: 15%;
-    margin-top: 2%;
+    margin-top: 1%;
 }
 
 .single-dl-button {
-    float: left;
-    margin-left: 5%;
-    margin-top: 2%;
+    margin-top: 60%;
+}
+
+.download-button {
+    margin-top: 20%;
 }

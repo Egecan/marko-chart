@@ -25,8 +25,6 @@ export default class App extends Component {
       jsonfile: null,
       riskfree: 0.05,
       point: null,
-      stocks: "CBA.AX,BHP.AX,TLS.AX",
-      source: "yahoo",
       filetype: "uploadasync",
       minutes: 0
     }
@@ -34,12 +32,9 @@ export default class App extends Component {
     this.fileChange = this.fileChange.bind(this)
     this.jsonFileChange = this.jsonFileChange.bind(this)
     this.uploadJson = this.uploadJson.bind(this)
-    this.onClickLoadData = this.onClickLoadData.bind(this)
     this.onClickLineChart = this.onClickLineChart.bind(this)
     this.onHoverLineChart = this.onHoverLineChart.bind(this)
     this.updateCml = this.updateCml.bind(this)
-    this.updateStocks = this.updateStocks.bind(this)
-    this.updateSource = this.updateSource.bind(this)
     this.updateFileType = this.updateFileType.bind(this)
     this.downloadObjectAsJson = this.downloadObjectAsJson.bind(this)
     this.downloadSinglePoint = this.downloadSinglePoint.bind(this)
@@ -179,46 +174,9 @@ export default class App extends Component {
     }
   }
 
-  updateStocks(e) {
-    console.log(e.target.value)
-    this.setState({stocks:e.target.value})
-  }
-
-  updateSource(e) {
-    console.log(e.target.value)
-    this.setState({source:e.target.value})
-  }
-
   updateFileType(e) {
     console.log(e.target.value)
     this.setState({filetype:e.target.value})
-  }
-
-  onClickLoadData() {
-    this.setState({
-      loading: true,
-      data: '',
-      error: false,
-      file: null,
-      jsonfile: null,
-      point: null,
-      minutes: 0
-    })
-    getData(this.state.riskfree, this.state.stocks, this.state.source).then((json) => {
-      logErrorJson(json)
-      this.setState({
-        data: json,
-        loading: false,
-        riskfree: json.CML.OptimalPorfolio.riskfree_ret
-      })
-    })
-        .catch(error => {
-          console.log(error)
-          this.setState({
-            loading: false,
-            error: true
-          })
-        })
   }
 
   downloadObjectAsJson(){
@@ -340,23 +298,8 @@ export default class App extends Component {
 
     return (
         <div>
-          <div className="load-button">
-            <label className="cml">
-              CML:
-              <input type="number" defaultValue={this.state.riskfree} min="0" max="0.3" step="0.001" onChange={this.updateCml} />
-            </label>
-            <label className="stocks">
-              Comma Separated Stocks List:
-              <input type="text" value={this.state.stocks} onChange={this.updateStocks} />
-            </label>
-            <label className="stocks">
-              Source:
-            <select value={this.state.source} onChange={this.updateSource}>
-              <option value="yahoo">yahoo</option>
-              <option value="google">google</option>
-            </select>
-            </label>
-            <button onClick={this.onClickLoadData}>Load Data From Server</button>
+          <div className="button-header">
+            Upload your history data in CSV format for Markowitz Portfolio Analysis
           </div>
           <div className="upload-button">
             <form onSubmit={this.uploadFormSubmit}>
@@ -364,22 +307,28 @@ export default class App extends Component {
               <label className="file-type">
                 Upload Type:
                 <select value={this.state.filetype} onChange={this.updateFileType}>
-                  <option value="upload">upload</option>
-                  <option value="upload1">upload1</option>
                   <option value="uploadasync">uploadasync</option>
+                  <option value="upload1">upload1</option>
+                  <option value="upload">upload</option>
                 </select>
               </label>
               <button type="submit">Upload csv</button>
             </form>
           </div>
+          <div className="button-header-with-gap">
+            Upload your saved Markowitz Portfolio Analysis in JSON format for quick access
+          </div>
           <div className="upload-button">
             <form onSubmit={this.uploadJson}>
               <input type="file" onChange={this.jsonFileChange} />
-              <button type="submit">Upload previously calculated JSON</button>
+              <button type="submit">Upload JSON</button>
             </form>
           </div>
+
           <div className="App">
-            <h1>Markowitz</h1>
+            <div className="app-label">
+              <h1>Markowitz Analysis</h1>
+            </div>
             <LineChart
                 width={900}
                 height={600}
@@ -399,11 +348,17 @@ export default class App extends Component {
                 data={dataParsed}
             />
           </div>
-          <div className="single-dl-button">
-            <button onClick={this.downloadSinglePoint}>Export Single Point</button>
-          </div>
-          <div className="download-button">
-            <button onClick={this.downloadObjectAsJson}>Export Whole as JSON</button>
+          <div className="button-container">
+            <div className="cml">
+              CML:
+              <input type="number" defaultValue={this.state.riskfree} min="0" max="0.3" step="0.001" onChange={this.updateCml} />
+            </div>
+            <div className="single-dl-button">
+              <button onClick={this.downloadSinglePoint}>Export Selected Point Only</button>
+            </div>
+            <div className="download-button">
+              <button onClick={this.downloadObjectAsJson}>Export Whole Analysis as JSON</button>
+            </div>
           </div>
         </div>
     );
