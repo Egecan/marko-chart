@@ -6,7 +6,7 @@ import LineChart from 'react-linechart';
 import '../node_modules/react-linechart/dist/styles.css';
 import { parseGroupingBy } from './utils/Parser';
 import {
-  getData, fileIsIncorrectFileType, showInvalidFileTypeMessage, fileUpload, logErrorJson,
+  fileIsIncorrectFileType, showInvalidFileTypeMessage, fileUpload, logErrorJson,
   pollServer, doesJsonHaveExpectedContent, allowedFileTypes, allowedJsonTypes, fileIsIncorrectJsonType
 } from './utils/DataService';
 
